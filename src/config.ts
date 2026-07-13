@@ -16,7 +16,7 @@ export function loadConfig(): Config {
         "Create a Personal Access Token in the ATimeLogger web app:\n" +
         "  Settings -> API Tokens -> Generate token  (the value is shown only once)\n" +
         "Then register the server with:\n" +
-        "  claude mcp add atl " +
+        "  claude mcp add atimelogger " +
         baseUrlArg +
         "-e ATL_TOKEN=atl_pat_... -- node " +
         new URL("./index.js", import.meta.url).pathname +

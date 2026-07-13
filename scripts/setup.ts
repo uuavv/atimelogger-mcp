@@ -80,7 +80,7 @@ const desktopConfigPath =
 // The server itself defaults to production, so only surface ATL_BASE_URL on overrides.
 const desktopEntry = {
   mcpServers: {
-    atl: {
+    atimelogger: {
       command: "node",
       args: [serverEntry],
       env: {
@@ -95,10 +95,10 @@ const baseUrlArg = isDefaultUrl ? "" : `-e ATL_BASE_URL=${baseUrl} `;
 
 console.log("\nToken verified.\n");
 console.log("── Claude Code ─────────────────────────────────────────────\n");
-console.log(`  claude mcp add atl ${baseUrlArg}-e ATL_TOKEN=${token} -- node ${serverEntry}`);
+console.log(`  claude mcp add atimelogger ${baseUrlArg}-e ATL_TOKEN=${token} -- node ${serverEntry}`);
 console.log("\n── Claude Desktop ──────────────────────────────────────────\n");
 console.log(`Add this to ${desktopConfigPath}`);
-console.log("(merge the \"atl\" entry into \"mcpServers\" if the file already has one), then restart Claude Desktop:\n");
+console.log("(merge the \"atimelogger\" entry into \"mcpServers\" if the file already has one), then restart Claude Desktop:\n");
 console.log(
   JSON.stringify(desktopEntry, null, 2)
     .split("\n")

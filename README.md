@@ -21,7 +21,7 @@ The setup script prints ready-to-use registration snippets for both clients:
 **Claude Code** — a one-liner:
 
 ```bash
-claude mcp add atl \
+claude mcp add atimelogger \
   -e ATL_TOKEN=atl_pat_... \
   -- node /absolute/path/to/atimelogger-mcp/dist/index.js
 ```
@@ -31,7 +31,7 @@ claude mcp add atl \
 ```json
 {
   "mcpServers": {
-    "atl": {
+    "atimelogger": {
       "command": "node",
       "args": ["/absolute/path/to/atimelogger-mcp/dist/index.js"],
       "env": {

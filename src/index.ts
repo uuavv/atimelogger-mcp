@@ -14,8 +14,10 @@ const server = new McpServer(
   },
   {
     instructions: [
-      "ATimeLogger is the user's personal time tracker: they start/stop timers for activities",
-      '(e.g. "Work", "Sleep", "Reading") and review how their time was spent.',
+      "ATimeLogger is the user's personal time tracker. Use these tools whenever the user wants to",
+      "track time, start/stop/pause a timer, log hours or a past activity, check what is being tracked",
+      'right now, or see where their time went (daily/weekly/monthly totals, history). Activities are',
+      'things like "Work", "Sleep", "Reading".',
       "",
       "Conventions shared by all tools:",
       '- Activities are referenced by human-readable type names, fuzzy matched (exact, then substring) — never UUIDs. If a name does not resolve or is ambiguous, call list_activity_types and retry with a name from the tree. Groups organize types and cannot be started/logged, but may be used as report filters.',
