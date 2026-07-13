@@ -42,7 +42,7 @@ claude mcp add atimelogger \
 }
 ```
 
-The server targets production (`https://app.atimelogger.pro`) by default — no URL configuration needed. To work against a different backend (e.g. local dev), set `ATL_BASE_URL` explicitly: pass `--url http://localhost:8091` to the setup script (or set the env var), and it will include `ATL_BASE_URL` in the printed snippets. Generate the token in the web UI of the **same** server you point the MCP at.
+The server targets production (`https://app.atimelogger.pro`) by default — no URL configuration needed. To work against a different backend, set `ATL_BASE_URL` explicitly: pass `--url <base-url>` to the setup script (or set the env var), and it will include `ATL_BASE_URL` in the printed snippets. Generate the token in the web UI of the **same** server you point the MCP at.
 
 Troubleshooting: a 401 from any tool means the token is invalid, expired, or was revoked — generate a new one in **Settings → API Tokens** and update `ATL_TOKEN` in the MCP config.
 
@@ -59,14 +59,7 @@ Troubleshooting: a 401 from any tool means the token is invalid, expired, or was
 | `time_report` | Aggregated per-type statistics for a period (`today`, `this_week`, `last_month`, … or explicit dates) |
 | `list_intervals` | Raw history grouped by day, paged, max 100-day range |
 
-All tools accept human-readable type names (fuzzy matched) — never UUIDs. Durations are returned as `"2h 15m"` strings; times are shown in the user's ATimeLogger timezone unless a `timezone` parameter is given.
-
-## Manual testing
-
-```bash
-ATL_BASE_URL=http://localhost:8091 ATL_TOKEN=<token> \
-  npx @modelcontextprotocol/inspector node dist/index.js
-```
+Tools accept human-readable type names (fuzzy matched); internal ids also flow through tool outputs and parameters for exact targeting, but are never shown to the user. Durations are returned as `"2h 15m"` strings; times are shown in the user's ATimeLogger timezone unless a `timezone` parameter is given.
 
 ## Limitations
 

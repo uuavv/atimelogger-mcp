@@ -6,7 +6,7 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 `atimelogger-mcp` — a standalone MCP (Model Context Protocol) server, TypeScript over stdio, that wraps the ATimeLogger REST API for use from Claude Desktop / Claude Code. It exposes 8 tools: `get_current_status`, `list_activity_types`, `start_activity`, `stop_activity`, `pause_resume_activity`, `log_interval`, `time_report`, `list_intervals`.
 
-The backend is a separate Spring Boot app (source at `~/Projects/atl` on this machine); this repo never modifies it — it is a pure API client.
+The backend is a separate, private Spring Boot app; this repo never modifies it — it is a pure API client.
 
 ## Commands
 
@@ -47,7 +47,6 @@ Design rule: tools are task-shaped, not 1:1 REST mirrors. Names for humans, UUID
 - **Statistics**: `POST /api/statistics` `{types?, tags?, from, to, timezone?, groupBy: DAY|WEEK|MONTH}` → pre-aggregated, durations in seconds, `groupedStatistics` is a recursive type hierarchy.
 - **History**: `POST /api/intervals?page&size` (Spring `Page` of day groups, server default size 5) body `{types?, tags?, from, to, timezone}`; **max 100-day range** (server rejects beyond).
 - **Server-side quirks**: `PUT /api/activities/{id}` interval merging is an unfinished TODO in the backend — do not build an edit-activity tool on it; the start endpoint cannot attach a comment.
-- Ports: local dev 8091, prod 8090, no context path.
 
 ## Roadmap / known TODOs
 
